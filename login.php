@@ -1,6 +1,6 @@
 <?php
-include "database/db.php";
 session_start();
+include 'database/db.php';
 
 $error = "";
 
@@ -23,10 +23,11 @@ if (isset($_POST['login'])) {
         if ($user) {
             // Sử dụng password_verify để kiểm tra mật khẩu đã hash
             if (password_verify($password, $user['password'])) {
+                $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['gender'] = $user['gender'];
-                $_SESSION['user_id'] = $user['id']; // Thêm user_id vào session nếu cần
+                $_SESSION['user_id'] = $user['id'];
 
                 //Điều hướng theo role
                 if ($user['role'] == 1) {

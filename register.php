@@ -21,7 +21,7 @@ if (isset($_POST['register'])) {
 
         if (mysqli_stmt_execute($stmt)) {
             // echo "Đăng ký thành công!";
-            header("Location: login.php");
+            header("Location:login.php");
         } else {
             echo "Đăng ký thất bại: " . mysqli_error($conn);
         }

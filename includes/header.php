@@ -1,14 +1,9 @@
-<?php
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="UTF-8">
-    <title>Trang Web Của Bạn</title>
+    <title>Header</title>
     <style>
         body {
             margin: 0;
@@ -24,9 +19,16 @@
             align-items: center;
         }
 
-        .logo {
+        .logo a {
             font-size: 20px;
             font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
@@ -43,6 +45,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            margin-left: 20px;
         }
 
         .dropdown-content {
@@ -51,6 +54,7 @@
             background-color: #007bff;
             min-width: 160px;
             z-index: 1;
+            right: 0;
         }
 
         .dropdown-content a {
@@ -68,7 +72,6 @@
             display: block;
         }
 
-        /* Icon style */
         .dropdown button {
             background-color: #007bff;
             color: white;
@@ -98,24 +101,23 @@
                 <button>
                     <?php
                     if (isset($_SESSION['email'])) {
-                        echo "Welcome, " . htmlspecialchars($_SESSION['email']) . " 🔽";
+                        echo "Chào, " . htmlspecialchars($_SESSION['email']) . " 🔽";
                     } else {
-                        echo "Account 🔽";
+                        echo "Tài khoản 🔽";
                     }
                     ?>
                 </button>
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['email'])): ?>
-                        <a href="index.php">Profile</a>
-                        <a href="">Cart</a>
-                        <a href="logout.php">Logout</a>
+                        <a href="profile_user.php">Hồ sơ</a>
+                        <a href="cart.php">Giỏ hàng</a>
+                        <a href="logout.php">Đăng xuất</a>
                     <?php else: ?>
-                        <a href="login.php">Login</a>
-                        <a href="register.php">Register</a>
+                        <a href="login.php">Đăng nhập</a>
+                        <a href="register.php">Đăng ký</a>
                     <?php endif; ?>
                 </div>
             </div>
-
         </nav>
     </header>
 </body>
