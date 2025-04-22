@@ -1,9 +1,9 @@
 <?php
 include 'database/db.php';
 session_start();
-if (!isset($_SESSION['email'])) {
-    header('location:login.php');
-}
+// if (!isset($_SESSION['email'])) {
+//     header('location:login.php');
+// }
 
 // Kết nối đến cơ sở dữ liệu
 $sql = "SELECT * FROM products";
@@ -25,6 +25,10 @@ $result = mysqli_query($conn, $sql);
 <body>
     <div class="container_index">
         <?php include "includes/header.php"; ?>
+
+        <div style="width: 100%;">
+            <?php include "includes/slider_index.php"; ?>
+        </div>
         <h1>Danh sachs sản phẩm</h1>
 
         <div class="card_container">
