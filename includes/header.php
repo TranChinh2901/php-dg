@@ -106,7 +106,7 @@
                 </button>
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['email'])): ?>
-                        <a href="">Profile</a>
+                        <a href="index.php">Profile</a>
                         <a href="">Cart</a>
                         <a href="logout.php">Logout</a>
                     <?php else: ?>

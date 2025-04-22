@@ -41,8 +41,9 @@ if (isset($_GET['id'])) {
         <?php if ($product): ?>
             <div class="product-detail">
                 <div class="product-image">
-                    <img src="<?= $product['imageP'] ?>" alt="<?= $product['nameP'] ?>">
+                    <img src="./uploads/<?= $product['imageP'] ?>" alt="<?= htmlspecialchars($product['nameP']) ?>">
                 </div>
+
                 <div class="product-info">
                     <h1><?= $product['nameP'] ?></h1>
                     <div class="price-info">

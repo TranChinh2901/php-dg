@@ -35,13 +35,16 @@ $result = mysqli_query($conn, $sql);
             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                 <tr class="card">
                     <td><?= $row['idP'] ?></td>
-                    <td><img src="<?= $row['imageP'] ?>" alt="Product Image" style="width: 100px; height: 100px;"></td>
+                    <td><img src="../uploads/<?= $row['imageP'] ?>" alt="Product Image" style="width: 100px; height: 100px;"></td>
                     <td><?= $row['nameP'] ?></td>
                     <td><?= number_format($row['price'], 0, ',', '.') ?>đ</td>
                     <td><?= number_format($row['priceGoc'], 0, ',', '.') ?>đ</td>
                     <td><?= $row['discount'] ?></td>
                     <td><?= $row['description'] ?></td>
-                    <td><a href='delete_product.php?id=<?= $row['idP'] ?>'>Xóa</a></td>
+                    <td>
+                        <a href='update_product.php?id=<?= $row['idP'] ?>'>Sửa</a>
+                        <a href='delete_product.php?id=<?= $row['idP'] ?>'>Xóa</a>
+                    </td>
 
 
                 </tr>

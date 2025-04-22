@@ -36,7 +36,7 @@ $result = mysqli_query($conn, $sql);
                 <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                     <div class="card">
                         <div class="discount-badge"><?= $row['discount'] ?></div>
-                        <img src="<?= $row['imageP'] ?>" alt="Product Image">
+                        <img src="./uploads/<?= $row['imageP'] ?>" alt="Product Image">
                         <h2><?= $row['nameP'] ?></h2>
                         <div class="card_price">
                             <p><?= number_format($row['price'], 0, ',', '.') ?>đ</p>
