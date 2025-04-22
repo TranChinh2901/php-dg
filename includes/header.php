@@ -1,125 +1,56 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="UTF-8">
-    <title>Header</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Dropdown container */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-left: 20px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #007bff;
-            min-width: 160px;
-            z-index: 1;
-            right: 0;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #0056b3;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .dropdown button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Header Hiện Đại</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <a href="index.php">Logo</a>
+            <a href="index.php"><i class="fa-brands fa-php"></i> PHPBASIC</a>
         </div>
         <nav>
-            <a href="index.php">Trang chủ</a>
-            <a href="about.php">Giới thiệu</a>
-            <a href="contact.php">Liên hệ</a>
+            <a href="index.php"><i class="fas fa-home"></i> Trang chủ</a>
+            <a href="products.php"><i class="fas fa-info-circle"></i> Sản phẩm</a>
+            <a href="contact.php"><i class="fas fa-envelope"></i> Liên hệ</a>
 
             <div class="dropdown">
                 <button>
+                    <i class="fas fa-user-circle"></i>
                     <?php
                     if (isset($_SESSION['email'])) {
-                        echo "Chào, " . htmlspecialchars($_SESSION['email']) . " 🔽";
+                        echo htmlspecialchars($_SESSION['email']);
                     } else {
-                        echo "Tài khoản 🔽";
+                        echo "Tài khoản";
                     }
                     ?>
+                    <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['email'])): ?>
-                        <a href="profile_user.php">Hồ sơ</a>
-                        <a href="cart.php">Giỏ hàng</a>
-                        <a href="logout.php">Đăng xuất</a>
+                        <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
+                        <a href="cart.php"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                     <?php else: ?>
-                        <a href="login.php">Đăng nhập</a>
-                        <a href="register.php">Đăng ký</a>
+                        <a href="login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                        <a href="register.php"><i class="fas fa-user-plus"></i> Đăng ký</a>
                     <?php endif; ?>
                 </div>
             </div>
         </nav>
     </header>
+
 </body>
 
 </html>
