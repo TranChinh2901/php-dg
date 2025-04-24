@@ -50,6 +50,8 @@ if (isset($_POST['update'])) {
         $product['priceGoc'] = $priceGoc;
         $product['discount'] = $discount;
         $product['description'] = $description;
+
+        header('Location:product_list.php');
     } else {
         $message = "<p class='error'>Cập nhật thất bại: " . mysqli_error($conn) . "</p>";
     }

@@ -11,7 +11,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>Header Hiện Đại</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/header.css">
-    <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -29,19 +28,27 @@ if (session_status() === PHP_SESSION_NONE) {
                 <button>
                     <i class="fas fa-user-circle"></i>
                     <?php
-                    if (isset($_SESSION['email'])) {
-                        echo htmlspecialchars($_SESSION['email']);
+                    if (isset($_SESSION['name'])) {
+                        echo htmlspecialchars($_SESSION['name']);
                     } else {
                         echo "Tài khoản";
                     }
                     ?>
+
                     <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <?php if (isset($_SESSION['email'])): ?>
-                        <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
-                        <a href="cart.php"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
-                        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                    <?php if (isset($_SESSION['name'])): ?>
+                        <?php if ($_SESSION['role'] == 0):
+                        ?>
+                            <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
+                            <a href="cart.php"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                        <?php elseif ($_SESSION['role'] == 1):
+                        ?>
+                            <a href="../admin/index.php"><i class="fas fa-user"></i> Dashboard</a>
+                            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                        <?php endif; ?>
                     <?php else: ?>
                         <a href="login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                         <a href="register.php"><i class="fas fa-user-plus"></i> Đăng ký</a>
@@ -50,7 +57,6 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </nav>
     </header>
-
 </body>
 
 </html>

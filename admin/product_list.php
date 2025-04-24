@@ -17,7 +17,10 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <?php include "./layout/header.php" ?>
-    <h1>Danh sachs sản phẩm</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+        <h1>Danh sachs sản phẩm</h1>
+        <a href="create_product.php">Thêm sản phẩm</a>
+    </div>
 
     <table border="1" style="width: 100%; text-align: center;">
         <tr>
