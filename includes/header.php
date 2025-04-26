@@ -28,25 +28,25 @@ if (session_status() === PHP_SESSION_NONE) {
                 <button>
                     <i class="fas fa-user-circle"></i>
                     <?php
-                    if (isset($_SESSION['name'])) {
-                        echo htmlspecialchars($_SESSION['name']);
+                    if (isset($_SESSION['email'])) {
+                        echo htmlspecialchars($_SESSION['email']);
                     } else {
                         echo "Tài khoản";
                     }
                     ?>
-
                     <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <?php if (isset($_SESSION['name'])): ?>
-                        <?php if ($_SESSION['role'] == 0):
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <?php if ($_SESSION['role'] == 0): // Vai trò người dùng 
                         ?>
                             <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
                             <a href="cart.php"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
                             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
-                        <?php elseif ($_SESSION['role'] == 1):
+                        <?php elseif ($_SESSION['role'] == 1): // Vai trò admin 
                         ?>
                             <a href="../admin/index.php"><i class="fas fa-user"></i> Dashboard</a>
+
                             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                         <?php endif; ?>
                     <?php else: ?>
@@ -57,6 +57,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </nav>
     </header>
+
 </body>
 
 </html>

@@ -87,6 +87,8 @@
     transition: background-color 0.3s;
 }
 
+
+
 .actions button:hover {
     background-color: #c1121f;
 }

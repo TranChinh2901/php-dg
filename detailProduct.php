@@ -21,7 +21,6 @@ if (isset($_GET['id'])) {
     echo "ID sản phẩm không hợp lệ.";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -53,11 +52,18 @@ if (isset($_GET['id'])) {
                     </div>
                     <p><?= $product['description'] ?></p>
                     <div class="actions">
-                        <a href="cart_page.php?id=<?= $product['idP'] ?>" class="button">
-                            <button>Thêm vào giỏ hàng</button>
-                        </a>
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <a href="cart_page.php?id=<?= $product['idP'] ?>" class="button">
+                                <button>Thêm vào giỏ hàng</button>
+                            </a>
+                        <?php else: ?>
+                            <a href="login.php" class="buttonDN">
+                                <button>Vui lòng đăng nhập</button>
+                            </a>
+                        <?php endif; ?>
                         <a href="index.php" class="button">
                             <button>Quay lại</button>
+                        </a>
                     </div>
                 </div>
             </div>
