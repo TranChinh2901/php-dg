@@ -28,8 +28,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 <button>
                     <i class="fas fa-user-circle"></i>
                     <?php
-                    if (isset($_SESSION['email'])) {
-                        echo htmlspecialchars($_SESSION['email']);
+                    // Thay đổi điều kiện kiểm tra và hiển thị
+                    if (isset($_SESSION['user_id']) && isset($_SESSION['name'])) {
+                        echo "Xin chào, " . htmlspecialchars($_SESSION['name']);
                     } else {
                         echo "Tài khoản";
                     }
@@ -37,19 +38,24 @@ if (session_status() === PHP_SESSION_NONE) {
                     <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <?php if (isset($_SESSION['email'])): ?>
-                        <?php if ($_SESSION['role'] == 0): // Vai trò người dùng 
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 0): // Vai trò người dùng 
                         ?>
                             <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
                             <a href="cart.php"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
                             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
-                        <?php elseif ($_SESSION['role'] == 1): // Vai trò admin 
+                        <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] == 1): // Vai trò admin 
                         ?>
-                            <a href="../admin/index.php"><i class="fas fa-user"></i> Dashboard</a>
-
+                            <a href="admin/index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                            <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
+                            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                        <?php else: ?>
+                            <!-- Trường hợp role không xác định -->
+                            <a href="profile_user.php"><i class="fas fa-user"></i> Hồ sơ</a>
                             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                         <?php endif; ?>
                     <?php else: ?>
+                        <!-- Khi chưa đăng nhập -->
                         <a href="login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                         <a href="register.php"><i class="fas fa-user-plus"></i> Đăng ký</a>
                     <?php endif; ?>
